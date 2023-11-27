@@ -1,15 +1,23 @@
-# fake-responder
+# fakeresponder
 
-To install dependencies:
+A simple HTTP server that could respond with with a given status code and/or sleep for a given amount of time.
 
-```bash
-bun install
-```
+## Usage
 
-To run:
+- https://fakeresponder.onrender.com/?sleepMs=2000 - sleep for 2 seconds before responding
+- https://fakeresponder.onrender.com/?statusCode=500 - respond with 500 status code
+- https://fakeresponder.onrender.com/?response=ok - respond with `ok` as the response body (`Content-Type: text/plain`)
+- https://fakeresponder.onrender.com/?response=%7B%22ok%22:true%7D - respond with `{"ok": true}` as the response body (`Content-Type: application/json`)
 
-```bash
-bun run index.ts
-```
+The examples above are for `GET` requests. You can also use `POST`, `PUT`, `DELETE`.
 
-This project was created using `bun init` in bun v1.0.13. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## Contributing
+
+- `bun dev` to start the dev server.
+- `bun start` to start the server without the `--hot` reload flag.
+- `bun test` to run the tests.
+
+## Deployment to [Render](https://render.com/)
+
+1. Create a new **web service**
+2. Select **Docker** as your service's runtime
