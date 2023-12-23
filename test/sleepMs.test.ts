@@ -1,8 +1,6 @@
 import { expect, test } from 'bun:test';
-import { HOMEPAGE } from '../src/constants.ts';
 
 const host = '0.0.0.0:3000';
-const expectedResponse = HOMEPAGE;
 
 test('GET /?sleepMs=100', async () => {
   const startTime = performance.now();
