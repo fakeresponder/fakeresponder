@@ -1,0 +1,15 @@
+name: Keep instance awake
+
+# Render spins down a Free web service that goes 15 minutes without receiving inbound traffic.
+# To keep the service awake, let's send a request every 10 minutes.
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  keep-awake:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: curl https://fakeresponder.onrender.com/
