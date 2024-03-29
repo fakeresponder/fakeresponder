@@ -10,7 +10,7 @@ const server = Bun.serve({
 
     await Bun.sleep(Number(params.sleepMs));
 
-    return new Response(
+    const response = new Response(
       typeof params.response === 'string' ? params.response : JSON.stringify(params.response, null, 2),
       {
         headers: {
@@ -19,6 +19,8 @@ const server = Bun.serve({
         status: Number(params.statusCode) || 200,
       }
     );
+    response.headers.set('Access-Control-Allow-Origin', '*');
+    return response;
   },
 });
 
