@@ -9,6 +9,7 @@ A simple HTTP server that could respond with with a given status code and/or sle
 - https://fakeresponder.onrender.com/?response=ok - respond with `ok` as the response body (`Content-Type: text/plain`)
 - https://fakeresponder.onrender.com/?response=%7B%22ok%22:true%7D - respond with `{"ok": true}` as the response body (`Content-Type: application/json`)
 - https://fakeresponder.onrender.com/?headers={"my-header":"value"} - respond with `my-header: value` in the response headers
+- ?respondWithRequestHeaders=true - respond with request headers in the response body
 
 The examples above are for `GET` requests. You can also use `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`.
 

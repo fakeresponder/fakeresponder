@@ -8,7 +8,9 @@ export const getParams = async (request: Request): Promise<any> => {
       : // POST/PUT/DELETE params
         parseSearchStringOrJson(await request.text());
 
-  if (params.response === undefined) {
+  if (params.respondWithRequestHeaders !== undefined) {
+    params.response = request.headers;
+  } else if (params.response === undefined) {
     params.response = HOMEPAGE;
   } else {
     try {
