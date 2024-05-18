@@ -9,6 +9,13 @@ test('GET /?response=ok', async () => {
   expect(text).toEqual('ok');
 });
 
+test('GET /?response=<a>hello</a>', async () => {
+  const response = await fetch(`http://${host}/?response=<a>hello</a>`);
+  expect(response.headers.get('content-type')).toEqual('text/html');
+  const text = await response.text();
+  expect(text).toEqual('<a>hello</a>');
+});
+
 test('GET /?response={"ok": true}', async () => {
   const response = await fetch(`http://${host}/?response={"ok": true}`);
   expect(response.headers.get('content-type')).toEqual('application/json');
