@@ -18,6 +18,14 @@ export const getParams = async (request: Request): Promise<any> => {
     }
   }
 
+  if (params.headers) {
+    try {
+      params.headers = JSON.parse(params.headers);
+    } catch (error: unknown) {
+      params.headers = {};
+    }
+  }
+
   return params;
 };
 

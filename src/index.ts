@@ -20,6 +20,13 @@ const server = Bun.serve({
       }
     );
     response.headers.set('Access-Control-Allow-Origin', '*');
+    if (params.headers) {
+      for (const [key, value] of Object.entries(params.headers)) {
+        if (typeof key === 'string' && typeof value === 'string') {
+          response.headers.set(key, value);
+        }
+      }
+    }
     return response;
   },
 });

@@ -16,6 +16,22 @@ test('GET /?response={"ok": true}', async () => {
   expect(json).toEqual({ ok: true });
 });
 
+test('GET /?response={"string": "hello", "number": 123, "array": [1, 2, 3], "object": {"key": "value"}, "null": null, "boolean": true}', async () => {
+  const response = await fetch(
+    `http://${host}/?response={"string": "hello", "number": 123, "array": [1, 2, 3], "object": {"key": "value"}, "null": null, "boolean": true}`
+  );
+  expect(response.headers.get('content-type')).toEqual('application/json');
+  const json = await response.json();
+  expect(json).toEqual({
+    string: 'hello',
+    number: 123,
+    array: [1, 2, 3],
+    object: { key: 'value' },
+    null: null,
+    boolean: true,
+  });
+});
+
 test('POST response=ok', async () => {
   const response = await fetch(`http://${host}`, {
     method: 'POST',
