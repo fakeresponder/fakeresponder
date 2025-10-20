@@ -2,8 +2,8 @@ FROM oven/bun
 
 WORKDIR /usr/src/app
 
-COPY package.json yarn.lock ./
-RUN bun install --yarn
+COPY package.json bun.lock ./
+RUN bun install
 COPY . .
 
 ENV NODE_ENV production
